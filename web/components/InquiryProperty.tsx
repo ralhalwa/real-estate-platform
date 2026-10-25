@@ -1,0 +1,17 @@
+'use client';
+import {useState} from 'react';
+import {MapPin,BedDouble,Bath,Maximize,ArrowUpRight,ImageOff,Building2} from 'lucide-react';
+import type {Listing,Language} from '@/lib/model';
+export default function InquiryProperty({listing,lang,onOpen}:{listing:Listing|undefined;lang:Language;onOpen:()=>void}){
+ const [index,setIndex]=useState(0);const t=(ar:string,en:string)=>lang==='ar'?ar:en;
+ const images=(listing?.image_urls||[]).filter(url=>{try{const u=new URL(url,'https://local.invalid');return u.protocol==='https:'||u.origin==='https://local.invalid'}catch{return false}});
+ const [failed,setFailed]=useState<string[]>([]);
+ const photos=images.filter(url=>!failed.includes(url));const photo=photos[index]||photos[0];
+ if(!listing)return <aside className="inquiry-property inquiry-property-unavailable"><Building2 size={30}/><h3>{t('تفاصيل العقار غير متاحة','Property details unavailable')}</h3><p>{t('قد يكون الإعلان غير متاح لحسابك حالياً. يبقى الاستفسار محفوظاً.','The listing may no longer be accessible to your account. Your inquiry remains available.')}</p></aside>;
+ const amount=new Intl.NumberFormat(lang==='ar'?'ar-SY':'en-US',{maximumFractionDigits:0}).format(listing.price)+' '+(listing.currency==='USD'?'$':listing.currency==='SYP'?t('ل.س','SYP'):listing.currency);
+ const types:Record<string,string>={apartment:t('شقة','Apartment'),house:t('منزل','House'),villa:t('فيلا','Villa'),land:t('أرض','Land'),commercial:t('تجاري','Commercial')};
+ const periods:Record<string,string>={month:t('شهرياً','per month'),year:t('سنوياً','per year'),day:t('يومياً','per day'),week:t('أسبوعياً','per week')};
+ return <aside className="inquiry-property"><div className="inquiry-photo">{photo?<img src={photo} alt={listing.title} onError={()=>setFailed(v=>[...v,photo])}/>:<div className="inquiry-photo-empty"><ImageOff size={28}/><span>{t('لا توجد صورة متاحة','No image available')}</span></div>}<span className="inquiry-purpose">{listing.purpose==='sale'?t('للبيع','For sale'):t('للإيجار','For rent')}</span>{photos.length>1&&<span className="inquiry-photo-count">{Math.min(index+1,photos.length)} / {photos.length}</span>}</div>
+ {photos.length>1&&<div className="inquiry-thumbnails" aria-label={t('صور العقار','Property photos')}>{photos.map((url,i)=><button type="button" key={url+i} aria-label={t('عرض الصورة ','Show photo ')+(i+1)} aria-pressed={photo===url} onClick={()=>setIndex(i)}><img src={url} alt=""/></button>)}</div>}
+ <div className="inquiry-property-copy"><span className="eyebrow">{t('العقار محل الاستفسار','PROPERTY OF INTEREST')}</span><h3>{listing.title}</h3><p className="inquiry-location"><MapPin size={14}/>{[listing.city,listing.district].filter(Boolean).join(' · ')}</p><div className="inquiry-property-price"><strong><bdi>{amount}</bdi></strong>{listing.purpose==='rent'&&listing.rent_period&&<span>{periods[listing.rent_period]||listing.rent_period}</span>}</div><div className="inquiry-property-facts"><span><Building2 size={15}/>{types[listing.property_type]||listing.property_type}</span><span><BedDouble size={15}/>{listing.bedrooms} {t('غرف','beds')}</span><span><Bath size={15}/>{listing.bathrooms} {t('حمامات','baths')}</span><span><Maximize size={15}/>{listing.area_sqm} {t('م²','m²')}</span></div><button type="button" className="button full" onClick={onOpen}>{t('عرض تفاصيل العقار','View full property')}<ArrowUpRight size={16}/></button></div></aside>;
+}

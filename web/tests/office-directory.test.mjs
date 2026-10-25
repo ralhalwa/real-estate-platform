@@ -1,0 +1,6 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {officeDirectory} from '../lib/office-directory.mjs';
+const base={userId:'manager',offices:[{id:'a',account_status:'active'},{id:'b',account_status:'active'}],people:[{id:'manager'},{id:'teammate'},{id:'stranger'}],members:[{office_id:'a',user_id:'manager',office_role:'manager',membership_status:'active'},{office_id:'a',user_id:'teammate',office_role:'agent',membership_status:'active'},{office_id:'b',user_id:'stranger',office_role:'agent',membership_status:'active'}]};
+test('manager directory excludes unrelated verified offices and their users',()=>{const result=officeDirectory({...base,admin:false});assert.deepEqual(result.offices.map(o=>o.id),['a']);assert.deepEqual(result.people.map(p=>p.id),['manager','teammate']);assert.equal(result.members.length,2)});
+test('suspended management and suspended offices expose no directory',()=>{assert.equal(officeDirectory({...base,members:base.members.map(m=>({...m,membership_status:'suspended'}))}).offices.length,0);assert.equal(officeDirectory({...base,offices:base.offices.map(o=>({...o,account_status:'suspended'}))}).people.length,0)});
+test('admin directory retains all offices',()=>assert.equal(officeDirectory({...base,admin:true}).offices.length,2));

@@ -1,0 +1,25 @@
+/* Refinements of the original Atelier layout; intentionally quiet. */
+.home-polish .hero-art{overflow:hidden;border-radius:3px}
+.home-polish .hero-art>img{transition:transform 1.1s cubic-bezier(.2,.7,.3,1)}
+@media(hover:hover){.home-polish .hero-art:hover>img{transform:scale(1.025)}}
+.home-polish .hero-art-top{font-size:9px;letter-spacing:1px}
+.home-polish .hero-art-bottom{bottom:45px}
+.home-polish .hero-art-bottom strong{font-size:27px}
+.home-polish .hero-description{color:#786f64}
+.home-polish .button{border-radius:3px;transition:background .22s,color .22s,border-color .22s}
+.home-polish .button.solid{box-shadow:0 2px 3px #4832250a}
+.home-polish .button.solid svg,.home-polish .text-btn svg{transition:transform .25s ease}
+@media(hover:hover){.home-polish .button.solid:hover svg,.home-polish .text-btn:hover svg{transform:translate(-2px,-2px)}html[dir=ltr] .home-polish .button.solid:hover svg,html[dir=ltr] .home-polish .text-btn:hover svg{transform:translate(2px,-2px)}}
+.home-polish .search-section{padding-block:29px}
+.home-polish .home-search select{min-height:34px}
+.home-polish .property-image,.home-polish .business-image{border-radius:3px;overflow:hidden}
+.home-polish .property-card .image-link img{transition:transform .65s cubic-bezier(.2,.7,.3,1)}
+.home-polish .property-card .image-link:hover img{transform:scale(1.035)}
+.home-polish .property-content{padding-bottom:21px}
+.home-polish .property-title{transition:color .2s}
+.home-polish .property-title:hover{color:var(--bronze)}
+.home-polish.polish-motion .homes-section,.home-polish.polish-motion .principles,.home-polish.polish-motion .business-section,.home-polish.polish-motion .closing{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .65s cubic-bezier(.2,.7,.3,1)}
+.home-polish.polish-motion .polish-visible{opacity:1;transform:none}
+.site-header nav .mobile-auth-nav{display:none}
+@media(max-width:650px){.home-polish .hero-art-top{font-size:8px}.home-polish .hero-art-bottom strong{font-size:24px}.home-polish .search-section{padding-block:23px}.home-polish .property-title{font-size:23px}.site-header nav .mobile-auth-nav{display:block;border-top:1px solid var(--line);margin-top:6px;padding-top:17px}}
+@media(prefers-reduced-motion:reduce){.home-polish *, .home-polish.polish-motion .homes-section,.home-polish.polish-motion .principles,.home-polish.polish-motion .business-section,.home-polish.polish-motion .closing{animation:none!important;transition:none!important;transform:none!important;opacity:1!important}}
