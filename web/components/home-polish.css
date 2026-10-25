@@ -23,3 +23,44 @@
 .site-header nav .mobile-auth-nav{display:none}
 @media(max-width:650px){.home-polish .hero-art-top{font-size:8px}.home-polish .hero-art-bottom strong{font-size:24px}.home-polish .search-section{padding-block:23px}.home-polish .property-title{font-size:23px}.site-header nav .mobile-auth-nav{display:block;border-top:1px solid var(--line);margin-top:6px;padding-top:17px}}
 @media(prefers-reduced-motion:reduce){.home-polish *, .home-polish.polish-motion .homes-section,.home-polish.polish-motion .principles,.home-polish.polish-motion .business-section,.home-polish.polish-motion .closing{animation:none!important;transition:none!important;transform:none!important;opacity:1!important}}
+
+/* Bayt's modern public homepage: warm sand, ink and generous curved forms. */
+.home-polish{--ink:#171717;--espresso:#171717;--bronze:#b88f73;--muted:#797974;--display:var(--sans);background:#fffefa;color:var(--ink)}
+.home-polish h1,.home-polish h2{font-weight:650;letter-spacing:-2.4px}
+.home-polish em{font-style:normal;font-weight:650}
+.home-polish .hero{grid-template-columns:1fr 1fr;gap:65px;padding-block:35px 50px;min-height:640px}
+.home-polish .hero-copy{padding-top:0}
+.home-polish .hero h1{font-size:clamp(42px,4.7vw,72px);line-height:1.08;letter-spacing:-3.4px;margin:27px 0 30px}
+.home-polish .hero-description{font-size:17px;line-height:1.8;max-width:480px;color:#797974}
+.home-polish .hero-cta{gap:14px;margin-top:32px}
+.home-polish .button,.home-polish .hero-cta>.text-btn{border-radius:999px;min-height:48px;padding:12px 24px;font-size:13px;font-weight:650}
+.home-polish .hero-cta>.text-btn{border:1px solid #d9d7d1;color:#171717}
+.home-polish .button.solid{background:#171717;border-color:#171717;box-shadow:0 12px 19px #17171718}
+.home-polish .button.solid:hover{background:#34302b;border-color:#34302b}
+.home-polish .hero-art{height:570px;border-radius:48% 41% 61% 32% / 28% 29% 65% 65%;overflow:hidden}
+.home-polish .hero-art:after{background:linear-gradient(180deg,transparent 55%,#17171770)}
+.home-polish .hero-art-top,.home-polish .hero-art-bottom .round-arrow{display:none}
+.home-polish .hero-art-bottom{inset-inline:45px;bottom:100px;max-width:320px}
+.home-polish .hero-art-bottom strong{font-family:var(--sans);font-weight:550;font-size:23px;line-height:1.25;letter-spacing:-.6px}
+.home-polish .hero-art .illustration-label{inset-inline-start:45px;bottom:75px;font-size:8px}
+.home-polish .hero-foot{margin-top:48px;opacity:.7}
+.home-polish .hero-number{display:none}
+.home-promise-band{display:grid;grid-template-columns:repeat(3,1fr);background:#171717;color:#fffefa;border-radius:28px;padding:32px 40px;margin-bottom:25px}
+.home-promise-band>div{display:flex;flex-direction:column;gap:5px;padding-inline:30px;border-inline-end:1px solid #ffffff25}
+.home-promise-band>div:last-child{border:0}
+.home-promise-band strong{font-size:30px;font-weight:550;letter-spacing:-1px;color:#c49a7d}
+.home-promise-band span{font-size:12px;color:#d1cec9}
+.home-polish .home-search{border-radius:22px;background:#f5f3ee;padding:22px;border:0}
+.home-polish .search-section{padding-block:38px}
+.home-polish .property-image,.home-polish .business-image{border-radius:22px}
+.home-polish .property-title{font-family:var(--sans);font-size:21px;font-weight:600;letter-spacing:-.6px}
+.home-polish .principles{background:#f4f1eb;border-radius:32px;margin-inline:20px}
+.home-polish .business-copy h2,.home-polish .closing h2{line-height:1.12}
+.modern-home-header{background:#fffefa;border-bottom:0;color:#171717}
+.modern-home-header .account-button{border-radius:999px;background:#171717;color:#fffefa;border-color:#171717;padding:12px 23px;box-shadow:0 10px 18px #17171718}
+.modern-home-header .brand-word{color:#171717}
+html[lang=ar] .home-polish h1,html[lang=ar] .home-polish h2{letter-spacing:-1px;line-height:1.45}
+@media(max-width:1000px){.home-polish .hero{gap:30px;min-height:0}.home-polish .hero-art{height:470px}.home-polish .hero h1{letter-spacing:-2px}.home-promise-band{padding:25px 15px}.home-promise-band>div{padding-inline:15px}.home-promise-band strong{font-size:25px}}
+@media(max-width:700px){.home-polish .hero{grid-template-columns:1fr;padding-block:28px 30px;gap:30px}.home-polish .hero h1{font-size:43px;letter-spacing:-2px}.home-polish .hero-description{font-size:15px}.home-polish .hero-art{height:390px;max-width:480px;width:100%;margin:auto}.home-polish .hero-art-bottom{bottom:85px;inset-inline:30px;max-width:260px}.home-polish .hero-art .illustration-label{bottom:60px;inset-inline-start:30px}.home-polish .hero-foot{margin-top:28px}.home-promise-band{grid-template-columns:1fr;gap:20px;border-radius:22px;padding:26px}.home-promise-band>div{padding:0 0 18px;border-inline-end:0;border-bottom:1px solid #ffffff25}.home-promise-band>div:last-child{padding-bottom:0}.home-promise-band strong{font-size:25px}.home-polish h2{letter-spacing:-1.3px}.home-polish .principles{margin-inline:10px;border-radius:22px}}
+.home-polish .hero-art-bottom{display:none}
+.home-polish .hero-art .illustration-label{inset-inline-start:35%;bottom:65px;white-space:nowrap}
