@@ -19,7 +19,7 @@ create table storage.objects(id uuid primary key default gen_random_uuid(),bucke
 alter table storage.objects enable row level security;
 create function storage.foldername(text) returns text[] language sql immutable as $$select (string_to_array($1,'/'))[1:array_length(string_to_array($1,'/'),1)-1]$$;
 grant usage on schema storage to authenticated;grant insert,select on storage.objects to authenticated;
-`);await db.exec(await readFile(new URL('../supabase/001_initial.sql',import.meta.url),'utf8'));await db.exec(await readFile(new URL('../supabase/003_office_staff.sql',import.meta.url),'utf8'));await db.exec(await readFile(new URL('../supabase/004_user_management.sql',import.meta.url),'utf8'));await db.exec(await readFile(new URL('../supabase/005_saved_property_history.sql',import.meta.url),'utf8'));for(const [name,id] of Object.entries(ids))await db.query('insert into auth.users(id,email) values($1,$2)',[id,name+'@example.com']);await db.exec(`insert into public.user_roles values('${ids.admin}','admin'),('${ids.agent}','agent')`)});
+`);await db.exec(await readFile(new URL('../supabase/001_initial.sql',import.meta.url),'utf8'));await db.exec(await readFile(new URL('../supabase/003_office_staff.sql',import.meta.url),'utf8'));await db.exec(await readFile(new URL('../supabase/004_user_management.sql',import.meta.url),'utf8'));await db.exec(await readFile(new URL('../supabase/005_saved_property_history.sql',import.meta.url),'utf8'));await db.exec(await readFile(new URL('../supabase/006_office_manager_reviews.sql',import.meta.url),'utf8'));for(const [name,id] of Object.entries(ids))await db.query('insert into auth.users(id,email) values($1,$2)',[id,name+'@example.com']);await db.exec(`insert into public.user_roles values('${ids.admin}','admin'),('${ids.agent}','agent')`)});
 after(async()=>{await db.close()});
 test('registration gives customer role only, with no metadata privilege escalation',async()=>{await owner(`insert into auth.users(id,email,raw_user_meta_data) values('00000000-0000-0000-0000-000000000005','attack@example.com','{"role":"admin","full_name":"Test"}')`);const r=await owner("select role from public.user_roles where user_id='00000000-0000-0000-0000-000000000005'");assert.deepEqual(r.rows.map(x=>x.role),['customer'])});
 test('agent can submit a pending listing',async()=>{await as('authenticated',ids.agent,`insert into public.listings(id,agent_user_id,title,description,city,district,purpose,property_type,price,currency,area_sqm,image_urls) values('${listing}','${ids.agent}','Test home','A sufficiently detailed property description','دمشق','المالكي','sale','house',100000,'USD',140,array['https://example.com/home.jpg'])`);const r=await as('authenticated',ids.agent,`select approval_status from public.listings where id='${listing}'`);assert.equal(r.rows[0].approval_status,'pending')});
@@ -77,4 +77,16 @@ test('saved sold homes remain readable only to the saver while approved',async()
  assert.equal((await as('anon',null,`select id from public.listings where id='${id}'`)).rows.length,0);
  await as('authenticated',ids.admin,`update public.listings set approval_status='suspended' where id='${id}'`);
  assert.equal((await as('authenticated',saver,`select id from public.listings where id='${id}'`)).rows.length,0);
+});
+
+test('office manager can review own office listings but not unrelated properties',async()=>{
+ const manager='00000000-0000-0000-0000-000000000088', office='30000000-0000-0000-0000-000000000088', home='10000000-0000-0000-0000-000000000088';
+ await as('authenticated',ids.admin,'select 1');
+ await db.exec('reset role');
+ await db.exec(`insert into auth.users(id,email) values('${manager}','review-manager@example.com'); insert into public.offices(id,name) values('${office}','Review office'); insert into public.office_members(office_id,user_id,office_role) values('${office}','${manager}','manager'),('${office}','${ids.agent}','agent'); insert into public.listings(id,agent_user_id,office_id,title,description,city,district,purpose,property_type,price,currency,area_sqm,image_urls) values('${home}','${ids.agent}','${office}','Review home','A sufficiently detailed property description','دمشق','المالكي','sale','house',100,'USD',140,array['https://example.com/home.jpg'])`);
+ await as('authenticated',manager,`select public.review_listing('${home}','approved','')`);
+ assert.equal((await as('authenticated',manager,`select approval_status from public.listings where id='${home}'`)).rows[0].approval_status,'approved');
+ assert.equal((await as('authenticated',manager,`select id from public.listing_reviews where listing_id='${home}'`)).rows.length,1);
+ await assert.rejects(as('authenticated',manager,`select public.review_listing('10000000-0000-0000-0000-000000000099','approved','')`),/Admin role/);
+ await assert.rejects(as('authenticated',manager,`select public.review_listing('${home}','rejected','')`),/reason required/);
 });
