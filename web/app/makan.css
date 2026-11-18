@@ -926,3 +926,27 @@ body:has(> .makan-footer) > main {
   padding-block-start: 12px;
   font-size: 12px;
 }
+
+.makan-header-account {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding-inline: 12px;
+  border: 1px solid var(--makan-border);
+  border-radius: 8px;
+  background: var(--makan-paper);
+  color: var(--makan-navy);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.makan-header-account:hover {
+  border-color: var(--makan-gold);
+}
+
+@media (max-width: 650px) {
+  .makan-header-account {
+    display: none;
+  }
+}

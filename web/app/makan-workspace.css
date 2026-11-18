@@ -1,0 +1,345 @@
+.workspace-page.makan-surface,
+body:has(.workspace-page) > .dialog:not(.makan-auth) {
+  --paper: var(--makan-paper);
+  --white: var(--makan-paper);
+  --canvas: var(--makan-ivory);
+  --ink: var(--makan-navy);
+  --espresso: var(--makan-navy);
+  --muted: var(--makan-slate);
+  --line: var(--makan-border);
+  --wash: #eee8d8;
+  --bronze: #82632f;
+  --sans: var(--makan-font);
+  --display: var(--makan-font);
+}
+
+.workspace-page .workspace-shell .dashboard-main {
+  background: #faf8f1;
+  padding-inline: clamp(18px, 3.7vw, 64px);
+}
+
+.workspace-page .workspace-shell .dashboard-sidebar {
+  --ink: var(--makan-ivory);
+  --muted: #d4dce4;
+  --line: #ffffff23;
+  --espresso: var(--makan-paper);
+  --bronze: var(--makan-gold);
+  color: var(--ink);
+  background: var(--makan-navy);
+  border-color: var(--makan-navy);
+}
+
+.workspace-page .workspace-shell .sidebar-brand {
+  padding-inline: 0;
+}
+
+.workspace-page .sidebar-brand .brand-link {
+  padding: 8px 12px;
+  border-radius: 9px;
+  background: var(--makan-ivory);
+}
+
+.workspace-page .workspace-shell .sidebar-heading {
+  padding: 16px 10px 19px;
+  border-block: 1px solid var(--line);
+}
+
+.workspace-page .workspace-shell .sidebar-heading::after {
+  content: none;
+}
+
+.workspace-page .sidebar-heading::before,
+.workspace-page .makan-workspace-overview::before,
+.workspace-page .profile-identity::before {
+  filter: brightness(0) invert(1);
+  opacity: .16;
+}
+
+.workspace-page .workspace-shell .dashboard-sidebar nav {
+  gap: 4px;
+  margin-block-start: 17px;
+}
+
+.workspace-page .workspace-shell .dashboard-sidebar nav > button {
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  color: var(--muted);
+}
+
+.workspace-page .workspace-shell .dashboard-sidebar nav > button:hover {
+  background: #ffffff10;
+  color: var(--makan-paper);
+}
+
+.workspace-page .workspace-shell .dashboard-sidebar nav > button.active {
+  border-color: #ffffff25;
+  background: var(--makan-blue);
+  color: var(--makan-paper);
+}
+
+.workspace-page .dashboard-sidebar .nav-count {
+  border-radius: 5px;
+  background: var(--makan-gold);
+  color: var(--makan-navy);
+}
+
+.workspace-page .dashboard-sidebar .user-summary {
+  width: 100%;
+  padding: 11px 6px;
+  border: 0;
+  border-block-start: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.workspace-page .dashboard-sidebar .user-summary:hover,
+.workspace-page .dashboard-sidebar .user-summary[aria-current='page'] {
+  border-color: var(--line);
+  background: #ffffff0c;
+}
+
+.workspace-page .dashboard-sidebar .user-summary .initial {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+}
+
+.workspace-page .dashboard-sidebar .user-summary > svg {
+  color: var(--muted);
+}
+
+.workspace-page .dashboard-sidebar .sidebar-bottom > .text-btn {
+  color: #f4ccbd;
+}
+
+.workspace-page .dashboard-topline > .text-btn {
+  padding-inline: 12px;
+  border: 1px solid var(--makan-border);
+  border-radius: 8px;
+  background: var(--makan-paper);
+}
+
+.workspace-page :is(.dashboard-heading, .people-page-heading, .offices-page-heading, .profile-page-heading, .staff-queue) {
+  padding: clamp(19px, 3vw, 36px);
+  border: 1px solid var(--makan-border);
+  border-radius: 16px;
+  background: var(--makan-ivory);
+}
+
+.workspace-page :is(.people-page-heading, .offices-page-heading, .profile-page-heading, .staff-queue) {
+  margin-block: 28px 22px;
+}
+
+.workspace-page .workspace-shell .dashboard-heading {
+  margin-block: 28px 22px;
+}
+
+.workspace-page .dashboard-heading h1 {
+  font-size: clamp(26px, 3.5vw, 44px);
+  text-wrap: balance;
+}
+
+.workspace-page .dashboard-heading .eyebrow {
+  margin-block-end: 8px;
+}
+
+.workspace-page .makan-workspace-overview,
+.workspace-page .profile-identity {
+  background: var(--makan-navy);
+  color: var(--makan-ivory);
+}
+
+.workspace-page .makan-workspace-overview :is(p, .today),
+.workspace-page .profile-identity p {
+  color: #dbe3ed;
+}
+
+.workspace-page .makan-workspace-overview .today {
+  border: 1px solid #ffffff35;
+  border-radius: 8px;
+  padding: 7px 11px;
+}
+
+.workspace-page .dashboard-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-color: var(--makan-border);
+  background: var(--makan-paper);
+}
+
+.workspace-page .dashboard-stat > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  color: var(--makan-blue);
+  font-weight: 500;
+}
+
+.workspace-page .dashboard-stat i {
+  display: grid;
+  flex: 0 0 31px;
+  place-items: center;
+  height: 31px;
+  border-radius: 7px;
+  background: var(--makan-ivory);
+  color: var(--bronze);
+}
+
+.workspace-page .dashboard-stat strong {
+  color: var(--makan-navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.workspace-page .dashboard-stat small {
+  color: var(--makan-slate);
+}
+
+.workspace-page :is(.listing-table, .lead-list, .people-directory, .office-team-table, .office-directory-card, .location-list, .form-card, .profile-office-section, .empty-state) {
+  border: 1px solid var(--makan-border);
+  border-radius: 14px;
+  background: var(--makan-paper);
+}
+
+.workspace-page .location-list {
+  padding-inline: 18px;
+}
+
+.workspace-page .location-row:last-child {
+  border-bottom: 0;
+}
+
+.workspace-page :is(.table-labels, .people-directory-labels, .office-team-labels, .filter-bar, .extra-filters, .workspace-note) {
+  background: var(--makan-ivory);
+}
+
+.workspace-page :is(.listing-row, .people-directory-row, .office-team-row):hover {
+  background: #f9f6ed;
+}
+
+.workspace-page .table-price bdi {
+  overflow-wrap: anywhere;
+}
+
+.workspace-page .status-tabs > button.active,
+.workspace-page .workspace-view-switch > button[aria-pressed='true'] {
+  border-color: var(--makan-navy);
+  background: var(--makan-navy);
+  color: var(--makan-paper);
+}
+
+.workspace-page :is(.profile-page, .user-summary) {
+  --profile-accent: var(--makan-navy);
+  --profile-tint: var(--makan-ivory);
+  --profile-border: var(--makan-border);
+}
+
+.workspace-page .profile-identity {
+  padding: clamp(16px, 3vw, 30px);
+  border: 0;
+  border-radius: 16px;
+  margin-block-end: 23px;
+}
+
+
+.workspace-page .profile-identity .profile-access-label {
+  border-color: #ffffff30;
+  background: #ffffff14;
+  color: var(--makan-ivory);
+}
+
+.workspace-page .profile-identity .profile-active {
+  color: #cde8ce;
+}
+
+.workspace-page :is(.people-summary, .offices-summary) > span:nth-child(n) > svg,
+.workspace-page :is(.office-directory-icon, .profile-office-icon) {
+  background: var(--makan-ivory);
+  color: var(--bronze);
+}
+
+.workspace-page :is(.people-summary, .offices-summary) > span:nth-child(n) > strong {
+  color: var(--makan-navy);
+}
+
+body:has(.workspace-page) > .dialog:not(.makan-auth) {
+  border-radius: 16px;
+  font-family: var(--makan-font);
+}
+
+body:has(.workspace-page) > .dialog:not(.makan-auth)::backdrop {
+  background: #10244180;
+}
+
+body:has(.workspace-page) > .dialog:not(.makan-auth) .dialog-head {
+  background: var(--makan-ivory);
+}
+
+body:has(.workspace-page) > .dialog:not(.makan-auth) .button {
+  border-radius: 8px;
+}
+
+body:has(.workspace-page) > .dialog:not(.makan-auth) .button.solid {
+  background: var(--makan-navy);
+  border-color: var(--makan-navy);
+}
+
+.workspace-page :is(input, select, textarea):not([type='checkbox'], [type='radio']),
+body:has(.workspace-page) > .dialog:not(.makan-auth) :is(input, select, textarea):not([type='checkbox'], [type='radio']) {
+  border-radius: 8px;
+}
+
+@media (max-width: 650px) {
+  .workspace-page .dashboard-stat > span {
+    align-items: flex-start;
+    flex-direction: column-reverse;
+  }
+
+  .workspace-page .dashboard-stat i {
+    width: 28px;
+    height: 28px;
+    flex: none;
+  }
+
+  .workspace-page .makan-workspace-overview .today {
+    align-self: flex-start;
+  }
+}
+
+.workspace-page .dashboard-sidebar select {
+  border-color: #ffffff35;
+  background: var(--makan-blue);
+  color: var(--makan-paper);
+  color-scheme: dark;
+}
+
+.workspace-page .profile-office-section {
+  align-self: start;
+  padding: clamp(16px, 2.5vw, 24px);
+}
+
+.workspace-page .profile-office-section .profile-section-title {
+  margin-block-end: 14px;
+}
+
+.workspace-page .profile-office-section .profile-office-empty {
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--makan-ivory);
+  color: var(--makan-slate);
+}
+
+
+.workspace-page .makan-avatar,
+body:has(.workspace-page) > .dialog .makan-avatar {
+  flex-shrink: 0;
+  border: 1px solid var(--makan-gold);
+  border-radius: 50%;
+  background: var(--makan-ivory);
+  color: var(--makan-navy);
+  font-family: var(--makan-font);
+  font-weight: 600;
+}
