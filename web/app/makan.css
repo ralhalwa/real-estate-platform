@@ -1,0 +1,928 @@
+@font-face {
+  font-family: Poppins;
+  src: url('/fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url('/fonts/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url('/fonts/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  --makan-navy: #102441;
+  --makan-blue: #253a54;
+  --makan-ivory: #f5f2e7;
+  --makan-gold: #c5a15b;
+  --makan-slate: #5b616c;
+  --makan-paper: #fffefa;
+  --makan-border: #e2ddd0;
+  --makan-font: Poppins, 'Noto Sans Arabic', sans-serif;
+}
+
+.makan-home,
+.makan-header,
+.makan-footer {
+  background: var(--makan-ivory);
+  color: var(--makan-navy);
+  font-family: var(--makan-font);
+}
+
+.makan-header .container,
+.makan-footer .container,
+.makan-container {
+  width: min(1200px, calc(100% - 80px));
+  margin-inline: auto;
+}
+
+.makan-header {
+  height: auto;
+}
+
+.makan-header .header-inner {
+  height: 91px;
+  border-block-end: 1px solid var(--makan-border);
+}
+
+.makan-logo {
+  width: 137px;
+  height: auto;
+  object-fit: contain;
+}
+
+.makan-header nav > button,
+.makan-header .language-btn {
+  color: var(--makan-navy);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.makan-header nav > button.active::after {
+  background: var(--makan-gold);
+}
+
+.makan-header .account-button,
+.makan-search .button.solid {
+  min-height: 48px;
+  border: 1px solid var(--makan-navy);
+  border-radius: 8px;
+  background: var(--makan-navy);
+  color: var(--makan-paper);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.makan-header .account-button:hover,
+.makan-search .button.solid:hover {
+  border-color: var(--makan-blue);
+  background: var(--makan-blue);
+}
+
+.makan-home {
+  display: grid;
+  gap: 30px;
+  padding-block: 30px 48px;
+}
+
+.makan-home h1,
+.makan-home h2 {
+  color: var(--makan-navy);
+  font-family: var(--makan-font);
+  font-weight: 600;
+  letter-spacing: -.035em;
+}
+
+html[lang='ar'] .makan-home h1,
+html[lang='ar'] .makan-home h2 {
+  letter-spacing: normal;
+}
+
+.makan-home p {
+  color: var(--makan-slate);
+}
+
+.makan-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 9fr);
+  align-items: center;
+  gap: 48px;
+}
+
+.makan-hero-copy {
+  display: grid;
+  justify-items: start;
+  gap: 21px;
+}
+
+.makan-home .makan-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--makan-blue);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .045em;
+}
+
+.makan-kicker::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--makan-gold);
+}
+
+.makan-home .makan-hero h1 {
+  font-size: clamp(36px, 4.35vw, 66px);
+  line-height: 1.12;
+}
+
+.makan-hero-copy > p:last-child {
+  max-width: 425px;
+  font-size: 17px;
+}
+
+.makan-hero figure {
+  margin: 0;
+}
+
+.makan-hero figure img {
+  width: 100%;
+  aspect-ratio: 640 / 396;
+  border-radius: 24px;
+}
+
+.makan-hero figcaption {
+  margin-block-start: 5px;
+  color: var(--makan-slate);
+  font-size: 10px;
+  text-align: end;
+}
+
+.makan-search {
+  display: grid;
+  gap: 12px;
+  padding: 20px 26px;
+  border: 1px solid var(--makan-border);
+  border-radius: 16px;
+  background: var(--makan-paper);
+}
+
+.makan-search h2 {
+  font-size: 20px;
+}
+
+.makan-search-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, .9fr) minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.makan-search-fields label {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--makan-border);
+  border-radius: 8px;
+}
+
+.makan-search-fields label span {
+  color: var(--makan-slate);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.makan-search-fields select {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--makan-navy);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.makan-explore {
+  display: grid;
+  gap: 22px;
+}
+
+.makan-explore h2 {
+  font-size: clamp(28px, 3.5vw, 38px);
+}
+
+.makan-explore h2 + p {
+  margin-block-start: 6px;
+  font-size: 15px;
+}
+
+.makan-categories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.makan-category {
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--makan-border);
+  border-radius: 14px;
+  background: var(--makan-paper);
+  text-align: start;
+}
+
+.makan-category:hover {
+  border-color: var(--makan-gold);
+}
+
+.makan-category > img {
+  width: 100%;
+  height: clamp(150px, 16vw, 212px);
+}
+
+.makan-category-copy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px 19px;
+}
+
+.makan-category-copy strong,
+.makan-category-copy small {
+  display: block;
+}
+
+.makan-category-copy strong {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.makan-category-copy small {
+  color: var(--makan-slate);
+  font-size: 13px;
+}
+
+.makan-signoff {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 21px 34px;
+  border-radius: 14px;
+  background: var(--makan-navy);
+}
+
+.makan-signoff h2,
+.makan-signoff p {
+  color: var(--makan-ivory);
+}
+
+.makan-signoff h2 {
+  font-size: clamp(23px, 3vw, 31px);
+}
+
+.makan-signoff p {
+  margin-block-start: 6px;
+  font-size: 13px;
+}
+
+.makan-signoff img {
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(69%) sepia(38%) saturate(554%) hue-rotate(1deg) brightness(91%) contrast(87%);
+}
+
+.makan-footer {
+  border-block-start: 1px solid var(--makan-border);
+}
+
+.makan-footer .footer-top,
+.makan-footer .footer-bottom,
+.makan-footer .footer-top button {
+  color: var(--makan-navy);
+}
+
+@media (max-width: 850px) {
+  .makan-header .container,
+  .makan-footer .container,
+  .makan-container {
+    width: calc(100% - 50px);
+  }
+
+  .makan-header .header-inner {
+    height: 73px;
+  }
+
+  .makan-header .makan-logo {
+    width: 112px;
+  }
+
+  .makan-header nav.open {
+    top: 73px;
+    background: var(--makan-paper);
+  }
+
+  .makan-hero {
+    gap: 24px;
+  }
+
+  .makan-search-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .makan-home {
+    gap: 22px;
+    padding-block: 22px 26px;
+  }
+
+  .makan-hero,
+  .makan-search-fields,
+  .makan-categories {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .makan-hero-copy {
+    gap: 14px;
+  }
+
+  .makan-home .makan-hero h1 {
+    font-size: clamp(34px, 10.5vw, 44px);
+  }
+
+  .makan-hero-copy > p:last-child {
+    font-size: 14px;
+  }
+
+  .makan-hero figure img {
+    aspect-ratio: 340 / 220;
+    border-radius: 18px;
+  }
+
+  .makan-search {
+    padding-inline: 16px;
+  }
+
+  .makan-categories {
+    gap: 14px;
+  }
+
+  .makan-signoff {
+    padding-inline: 20px;
+  }
+
+  .makan-signoff img {
+    width: 38px;
+    height: auto;
+  }
+}
+
+.makan-header .mobile-auth-nav {
+  display: none;
+}
+
+.makan-footer {
+  margin: 0;
+  border-radius: 0;
+}
+
+.makan-footer .footer-bottom {
+  border-color: var(--makan-border);
+}
+
+@media (max-width: 650px) {
+  .makan-header .account-button {
+    display: none;
+  }
+
+  .makan-header nav.open .mobile-auth-nav {
+    display: block;
+  }
+}
+
+.makan-surface {
+  --paper: var(--makan-paper);
+  --canvas: var(--makan-ivory);
+  --ink: var(--makan-navy);
+  --espresso: var(--makan-navy);
+  --muted: var(--makan-slate);
+  --line: var(--makan-border);
+  --bronze: #82632f;
+  --wash: #eee8d8;
+  --sans: var(--makan-font);
+  background: var(--makan-ivory);
+  color: var(--makan-navy);
+  font-family: var(--makan-font);
+}
+
+.makan-surface .button {
+  border-radius: 8px;
+}
+
+.makan-surface .button.solid {
+  background: var(--makan-navy);
+  border-color: var(--makan-navy);
+}
+
+.makan-surface .button.solid:hover {
+  background: var(--makan-blue);
+  border-color: var(--makan-blue);
+}
+
+.makan-surface .makan-kicker {
+  display: block;
+  margin-block-end: 12px;
+  color: var(--makan-blue);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .07em;
+}
+
+html[lang='ar'] .makan-surface :is(h1, h2, .makan-kicker) {
+  letter-spacing: normal;
+}
+
+.makan-pattern {
+  position: relative;
+  isolation: isolate;
+}
+
+.makan-pattern::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: 46%;
+  border-radius: inherit;
+  background: url('/makan-motif.svg') center / 48px 50px repeat;
+  opacity: .11;
+  mask-image: linear-gradient(to right, transparent, black);
+  pointer-events: none;
+}
+
+.makan-pattern:dir(rtl)::before {
+  mask-image: linear-gradient(to left, transparent, black);
+}
+
+.makan-browse,
+.makan-about {
+  padding-block: 30px 58px;
+}
+
+.makan-banner {
+  padding: clamp(24px, 4.5vw, 64px);
+  border: 1px solid var(--makan-border);
+  border-radius: 24px;
+  background: var(--makan-paper);
+}
+
+.makan-banner h1 {
+  max-width: 740px;
+  font-size: clamp(34px, 5.2vw, 68px);
+  line-height: 1.1;
+  letter-spacing: -.045em;
+}
+
+.makan-banner p {
+  max-width: 520px;
+  margin-block-start: 16px;
+  font-size: 15px;
+}
+
+.makan-browse .page-title {
+  margin-block-end: 18px;
+}
+
+.makan-browse .filter-bar,
+.makan-browse .extra-filters {
+  background: var(--makan-paper);
+  border: 1px solid var(--makan-border);
+  border-radius: 14px;
+}
+
+.makan-browse .filter-bar .search-field,
+.makan-browse .filter-bar > select {
+  border-color: var(--makan-border);
+  background: var(--makan-ivory);
+  border-radius: 8px;
+  min-height: 46px;
+}
+
+.makan-browse .filter-bar > select {
+  padding-inline: 10px;
+}
+
+.makan-browse .filter-bar .search-field input::placeholder {
+  color: var(--makan-slate);
+}
+
+.makan-browse .results-line {
+  color: var(--makan-blue);
+  font-weight: 500;
+}
+
+.makan-browse .empty-state {
+  border-radius: 16px;
+  background: var(--makan-paper);
+}
+
+.makan-about {
+  display: grid;
+  gap: 30px;
+}
+
+.makan-about-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+}
+
+.makan-about-story figure {
+  margin: 0;
+}
+
+.makan-about-story img {
+  width: 100%;
+  aspect-ratio: 1.55;
+  border-radius: 20px;
+}
+
+.makan-about-story figcaption {
+  margin-block-start: 5px;
+  text-align: end;
+  font-size: 10px;
+  color: var(--makan-slate);
+}
+
+.makan-about-story h2 {
+  font-size: clamp(28px, 3vw, 42px);
+}
+
+.makan-about-story p {
+  margin-block: 14px 20px;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.makan-signoff.makan-pattern::before {
+  filter: brightness(0) invert(1);
+}
+
+body:has(> .makan-footer) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+body:has(> .makan-footer) > main {
+  flex: 1;
+}
+
+.makan-surface:has(> .makan-workspace-gate) {
+  display: grid;
+  align-items: center;
+}
+
+.makan-workspace-gate {
+  gap: clamp(24px, 5vw, 72px);
+  padding-block: 42px 58px;
+}
+
+.makan-workspace-gate h1 {
+  font-size: clamp(34px, 4vw, 60px);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.makan-workspace-gate h1 em {
+  color: var(--makan-blue);
+}
+
+.makan-workspace-gate .gate-visual {
+  overflow: hidden;
+  border-radius: 24px;
+  min-height: 290px;
+}
+
+.makan-workspace-gate .gate-visual > div {
+  border-radius: 12px;
+}
+
+.makan-surface .workspace-shell .dashboard-sidebar,
+.makan-surface .boot-sidebar {
+  background: var(--makan-ivory);
+}
+
+.makan-surface .workspace-shell .sidebar-heading {
+  position: relative;
+  isolation: isolate;
+}
+
+.makan-surface .workspace-shell .sidebar-heading::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: 46px;
+  background: url('/makan-motif.svg') center / 38px auto no-repeat;
+  opacity: .14;
+}
+
+.makan-surface .workspace-shell .dashboard-sidebar nav > button.active {
+  background: var(--makan-navy);
+  color: var(--makan-paper);
+}
+
+.makan-surface .workspace-shell .dashboard-sidebar nav > button.active svg {
+  color: var(--makan-gold);
+}
+
+.makan-property.property-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--makan-border);
+  border-radius: 16px;
+  background: var(--makan-paper);
+  color: var(--makan-navy);
+  font-family: var(--makan-font);
+}
+
+.makan-property.property-card:hover {
+  border-color: #bda77d;
+  box-shadow: 0 12px 28px #10244112;
+}
+
+.makan-property .property-image {
+  aspect-ratio: 1.56;
+  border-radius: 0;
+  background: var(--makan-ivory);
+}
+
+.makan-property .image-link:focus-visible {
+  outline-offset: -4px;
+}
+
+.makan-property .image-tag {
+  padding: 6px 11px;
+  background: var(--makan-navy);
+  color: var(--makan-paper);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.makan-property .save-btn {
+  background: var(--makan-paper);
+  color: var(--makan-navy);
+}
+
+.makan-property .save-btn.saved {
+  background: var(--makan-navy);
+  color: var(--makan-gold);
+}
+
+.makan-property .property-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+}
+
+.makan-property-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  color: #775a2e;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.makan-property-type small {
+  color: var(--makan-slate);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.makan-property .property-title {
+  margin-block: 5px 4px;
+  color: var(--makan-navy);
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.38;
+  overflow-wrap: anywhere;
+}
+
+.makan-property .location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--makan-slate);
+  font-size: 12px;
+}
+
+.makan-property .property-facts {
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-block: 14px;
+  padding: 0;
+  color: var(--makan-slate);
+  font-size: 11px;
+}
+
+.makan-property-end {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-block-start: auto;
+  padding-block-start: 12px;
+  border-block-start: 1px solid var(--makan-border);
+}
+
+.makan-property .property-price {
+  flex-wrap: wrap;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 600;
+}
+
+.makan-property-arrow {
+  display: grid;
+  flex: 0 0 40px;
+  place-items: center;
+  height: 40px;
+  border: 1px solid var(--makan-border);
+  border-radius: 9px;
+  background: var(--makan-ivory);
+}
+
+.makan-property-arrow:hover {
+  border-color: var(--makan-navy);
+  background: var(--makan-navy);
+  color: var(--makan-paper);
+}
+
+@media (min-width: 1100px) and (min-height: 950px) {
+  .makan-workspace-gate .gate-visual {
+    height: clamp(490px, 52dvh, 680px);
+  }
+}
+
+@media (max-width: 650px) {
+  .makan-about-story {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .makan-browse .page-title {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .makan-banner,
+  .makan-workspace-gate .gate-visual {
+    border-radius: 16px;
+  }
+}
+
+.makan-property .image-link img {
+  position: relative;
+}
+
+.makan-property .image-link img[hidden] {
+  display: none;
+}
+
+.makan-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--makan-slate);
+  font-size: 12px;
+}
+
+.makan-property .property-price,
+.makan-property .property-price bdi {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.dialog.makan-auth {
+  --paper: var(--makan-paper);
+  --ink: var(--makan-navy);
+  --espresso: var(--makan-navy);
+  --muted: var(--makan-slate);
+  --line: var(--makan-border);
+  --bronze: #82632f;
+  width: min(480px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  border-radius: 20px;
+  font-family: var(--makan-font);
+  box-shadow: 0 24px 80px #10244140;
+  overscroll-behavior: contain;
+}
+
+.makan-auth::backdrop {
+  background: #10244180;
+}
+
+.makan-auth .dialog-head {
+  align-items: start;
+  padding: 22px clamp(20px, 5vw, 30px);
+  background: var(--makan-ivory);
+}
+
+.makan-auth .makan-logo {
+  width: 112px;
+  margin-block-end: 12px;
+}
+
+.makan-auth .dialog-head h2 {
+  font-family: inherit;
+  font-size: clamp(24px, 5vw, 31px);
+  font-weight: 600;
+  letter-spacing: -.035em;
+}
+
+.makan-auth:dir(rtl) .dialog-head h2 {
+  letter-spacing: normal;
+}
+
+.makan-auth .dialog-head .icon-btn {
+  flex: 0 0 36px;
+  border: 1px solid var(--makan-border);
+  border-radius: 8px;
+  background: var(--makan-paper);
+}
+
+.makan-auth .auth-form {
+  padding: 20px clamp(20px, 5vw, 30px) 24px;
+}
+
+.makan-auth .auth-form > p {
+  font-size: 13px;
+  margin-block-end: 14px;
+}
+
+.makan-auth .auth-form > label {
+  color: var(--makan-navy);
+  font-size: 13px;
+  font-weight: 500;
+  margin-block: 12px;
+}
+
+.makan-auth .auth-form input {
+  min-height: 46px;
+  border: 1px solid var(--makan-border);
+  border-radius: 8px;
+  background: #faf8f0;
+  color: var(--makan-navy);
+  font-size: 16px;
+}
+
+.makan-auth .auth-form > .button {
+  min-height: 46px;
+  margin-block-start: 10px;
+  border-radius: 8px;
+  border-color: var(--makan-navy);
+  background: var(--makan-navy);
+  font-size: 13px;
+}
+
+.makan-auth .auth-form > .button:hover {
+  background: var(--makan-blue);
+  border-color: var(--makan-blue);
+}
+
+.makan-auth .auth-form .text-btn {
+  color: var(--makan-blue);
+  font-size: 12px;
+}
+
+.makan-auth .auth-form > .text-btn {
+  margin-block-start: 7px;
+  min-height: 34px;
+}
+
+.makan-auth .auth-switch {
+  flex-wrap: wrap;
+  margin-block-start: 13px;
+  padding-block-start: 12px;
+  font-size: 12px;
+}
