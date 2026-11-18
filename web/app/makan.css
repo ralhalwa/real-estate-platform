@@ -928,25 +928,73 @@ body:has(> .makan-footer) > main {
 }
 
 .makan-header-account {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 40px;
-  padding-inline: 12px;
-  border: 1px solid var(--makan-border);
-  border-radius: 8px;
-  background: var(--makan-paper);
-  color: var(--makan-navy);
-  font-size: 12px;
-  font-weight: 500;
+  display: inline-grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
 }
 
-.makan-header-account:hover {
-  border-color: var(--makan-gold);
+.makan-header-account:hover .makan-avatar {
+  filter: brightness(1.04);
 }
 
 @media (max-width: 650px) {
   .makan-header-account {
     display: none;
   }
+}
+
+/* Role palettes keep the same circular silhouette on every surface. */
+.makan-avatar {
+  --avatar-ring: #d4a18b;
+  --avatar-fill: #f8e9e1;
+  --avatar-ink: #673c31;
+}
+
+.makan-avatar[data-avatar-role='admin'] {
+  --avatar-ring: #d5ac60;
+  --avatar-fill: #f7e9cc;
+  --avatar-ink: #573a17;
+}
+
+.makan-avatar[data-avatar-role='manager'] {
+  --avatar-ring: #a797d1;
+  --avatar-fill: #eee7fa;
+  --avatar-ink: #493565;
+}
+
+.makan-avatar[data-avatar-role='agent'] {
+  --avatar-ring: #76acc9;
+  --avatar-fill: #e0f0f8;
+  --avatar-ink: #1d4962;
+}
+
+.makan-avatar[data-avatar-role='staff'] {
+  --avatar-ring: #79b49d;
+  --avatar-fill: #e2f2e9;
+  --avatar-ink: #285947;
+}
+
+:is(.workspace-page, .makan-header, .dialog) .makan-avatar {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  border: 1px solid var(--avatar-ring);
+  border-radius: 50%;
+  background: var(--avatar-fill);
+  color: var(--avatar-ink);
+  box-shadow: 0 0 13px color-mix(in srgb, var(--avatar-ring) 35%, transparent), inset 0 1px 2px #ffffffb0;
+  font-family: var(--makan-font);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.workspace-page .profile-identity .makan-avatar {
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  font-size: 23px;
 }
