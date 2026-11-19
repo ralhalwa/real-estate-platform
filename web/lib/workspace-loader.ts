@@ -6,8 +6,9 @@ export type WorkspaceSnapshot={listings:Listing[];profile:Person|null;roles:stri
 export const workspaceRequests=createRequestCache();
 export async function fetchWorkspace(client:SupabaseClient,userId:string|null):Promise<WorkspaceSnapshot>{
  const snapshot:WorkspaceSnapshot={listings:[],profile:null,roles:[],members:[],favorites:[],leads:[],people:[],offices:[],allRoles:[],allMembers:[],locations:[]};
+ if(!userId)return snapshot;
  const listingQuery=client.from('listings').select('*').order('created_at',{ascending:false});
- if(!userId){const {data,error}=await listingQuery;if(error)throw error;return {...snapshot,listings:data||[]}}
+
  // These requests do not depend on one another: do not wait for listings first.
  const [listings,p,r,m,f,l]=await Promise.all([listingQuery,client.from('profiles').select('*').eq('id',userId).single(),client.from('user_roles').select('*').eq('user_id',userId),client.from('office_members').select('*').eq('user_id',userId),client.from('favorites').select('listing_id').eq('user_id',userId),client.from('leads').select('*').order('created_at',{ascending:false})]);
  for(const result of [listings,p,r,m,f,l])if(result.error)throw result.error;

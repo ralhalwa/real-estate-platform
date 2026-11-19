@@ -1128,3 +1128,151 @@ body:has(> .makan-footer) > main {
     aspect-ratio: 16 / 10;
   }
 }
+
+.makan-landing-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: center;
+  min-height: clamp(420px, 48vw, 570px);
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--makan-navy);
+}
+
+.makan-landing-hero > img,
+.makan-landing-hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.makan-landing-hero > img {
+  object-position: 60% 54%;
+}
+
+.makan-landing-hero::before {
+  z-index: 0;
+  content: '';
+  background: linear-gradient(90deg, #102441 0%, #102441f2 26%, #1024418c 53%, #1024410d 83%);
+}
+
+.makan-landing-hero:dir(rtl)::before {
+  background: linear-gradient(270deg, #102441 0%, #102441f2 26%, #1024418c 53%, #1024410d 83%);
+}
+
+.makan-landing-copy {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  max-width: 590px;
+  gap: 16px;
+  padding: clamp(24px, 6vw, 75px);
+}
+
+.makan-home .makan-landing-kicker {
+  color: #e7c584;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .09em;
+}
+
+.makan-home .makan-landing-copy h1 {
+  color: var(--makan-ivory);
+  font-size: clamp(37px, 5.4vw, 77px);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.makan-home .makan-landing-copy p:not(.makan-landing-kicker) {
+  max-width: 40ch;
+  color: #f0ede4;
+  font-size: clamp(13px, 1.4vw, 16px);
+}
+
+.makan-landing-copy .makan-landing-action {
+  margin-block-start: 6px;
+  border-color: var(--makan-ivory);
+  border-radius: 8px;
+  background: var(--makan-ivory);
+  color: var(--makan-navy);
+  font-weight: 600;
+}
+
+.makan-landing-copy .makan-landing-action:hover {
+  border-color: var(--makan-gold);
+  background: var(--makan-gold);
+}
+
+.makan-landing-copy .makan-landing-action:focus-visible {
+  outline-color: var(--makan-gold);
+}
+
+.makan-landing-caption {
+  position: absolute;
+  inset-inline-end: 12px;
+  inset-block-end: 12px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: var(--makan-navy);
+  color: var(--makan-ivory);
+  font-size: 10px;
+}
+
+.makan-landing-capabilities {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 22px;
+  padding-block: 0 16px;
+}
+
+.makan-landing-capabilities > div {
+  display: flex;
+  align-items: start;
+  gap: 11px;
+  padding-block: 12px;
+  border-block-start: 1px solid var(--makan-border);
+}
+
+.makan-landing-capabilities > div > span {
+  display: grid;
+  flex: 0 0 41px;
+  height: 41px;
+  place-items: center;
+  border-radius: 9px;
+  background: #e2eaf1;
+  color: var(--makan-blue);
+}
+
+.makan-landing-capabilities h2 {
+  margin-block-end: 4px;
+  font-size: 16px;
+}
+
+.makan-landing-capabilities p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (max-width: 650px) {
+  .makan-landing-hero {
+    min-height: 440px;
+    align-items: end;
+  }
+
+  .makan-landing-hero::before,
+  .makan-landing-hero:dir(rtl)::before {
+    background: linear-gradient(0deg, var(--makan-navy) 12%, #102441ed 45%, #10244124 100%);
+  }
+
+  .makan-landing-copy {
+    padding-block-end: 54px;
+  }
+
+  .makan-landing-capabilities {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}

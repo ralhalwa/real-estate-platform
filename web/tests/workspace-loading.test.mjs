@@ -54,8 +54,8 @@ test('ordinary agents do not fetch administrator collections',async()=>{
 test('admins load their additional collections after checking their role',async()=>{
  const client=fakeClient('admin');const snapshot=await fetchWorkspace(client,'ali');assert.equal(snapshot.people.length,1);assert.equal(snapshot.offices.length,1);assert.equal(client.started.length,11);
 });
-test('anonymous visits request only public listings and have no private account data',async()=>{
- const client=fakeClient();const snapshot=await fetchWorkspace(client,null);assert.deepEqual(client.started,['listings']);assert.equal(snapshot.profile,null);assert.deepEqual(snapshot.roles,[]);assert.deepEqual(snapshot.leads,[]);
+test('anonymous visits request no workspace data',async()=>{
+ const client=fakeClient();const snapshot=await fetchWorkspace(client,null);assert.deepEqual(client.started,[]);assert.deepEqual(snapshot.listings,[]);assert.equal(snapshot.profile,null);assert.deepEqual(snapshot.roles,[]);assert.deepEqual(snapshot.leads,[]);
 });
 
 test('agents with office memberships load only the assigned office IDs',async()=>{
