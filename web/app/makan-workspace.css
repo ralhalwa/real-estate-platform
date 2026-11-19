@@ -777,3 +777,180 @@ html:has(.workspace-page) {
   background: var(--metric-icon);
   color: var(--metric-accent);
 }
+
+.makan-inbox-switch {
+  display: inline-flex;
+  gap: 4px;
+  margin-block-end: 14px;
+  padding: 4px;
+  border: 1px solid var(--makan-border);
+  border-radius: 10px;
+  background: var(--makan-ivory);
+}
+
+.makan-inbox-switch button {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 11px;
+  border-radius: 7px;
+  color: var(--makan-slate);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.makan-inbox-switch button[aria-pressed='true'] {
+  background: var(--makan-navy);
+  color: var(--makan-paper);
+}
+
+.makan-inbox-switch button span {
+  min-width: 19px;
+  padding-inline: 3px;
+  border-radius: 4px;
+  background: #10244112;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.makan-inbox-switch button[aria-pressed='true'] span {
+  background: #ffffff24;
+}
+
+.makan-inbox-list {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--makan-border);
+  border-radius: 13px;
+  background: var(--makan-paper);
+  list-style: none;
+}
+
+.makan-inbox-list li + li {
+  border-block-start: 1px solid var(--makan-border);
+}
+
+.makan-inbox-row {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: clamp(9px, 1.5vw, 18px);
+  padding: 16px clamp(10px, 2vw, 22px);
+  border-inline-start: 3px solid transparent;
+  text-align: start;
+}
+
+.makan-inbox-row[data-new='true'] {
+  border-inline-start-color: var(--makan-gold);
+  background: #f9f2e3;
+}
+
+.makan-inbox-row:is(:hover, :focus-visible) {
+  background: #edf2f6;
+}
+
+.makan-inbox-row:focus-visible {
+  outline-offset: -3px;
+}
+
+.makan-inbox-copy {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.makan-inbox-copy strong {
+  overflow: hidden;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.makan-inbox-property {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--makan-blue);
+  font-size: 11px;
+}
+
+.makan-inbox-property bdi,
+.makan-inbox-message {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.makan-inbox-message {
+  color: var(--makan-slate);
+  font-size: 12px;
+}
+
+.makan-inbox-meta {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+  color: var(--makan-slate);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.makan-inbox-arrow {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e9eff5;
+  color: var(--makan-navy);
+}
+
+@media (max-width: 650px) {
+  .makan-inbox-row {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .makan-inbox-meta {
+    grid-row: 2;
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .makan-inbox-arrow {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+}
+
+.workspace-confirmation {
+  padding: 22px clamp(17px, 5vw, 28px);
+}
+
+.workspace-confirmation p {
+  overflow-wrap: anywhere;
+}
+
+.workspace-confirmation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 8px;
+  margin-block-start: 20px;
+}
+
+body:has(.workspace-page) > .dialog .workspace-confirmation-actions .button.solid.danger {
+  border-color: #914536;
+  background: #914536;
+  color: var(--makan-paper);
+}
+
+body:has(.workspace-page) > .dialog .workspace-confirmation-actions .button.solid.danger:hover {
+  border-color: #773629;
+  background: #773629;
+}
