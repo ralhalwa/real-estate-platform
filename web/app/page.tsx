@@ -252,15 +252,15 @@ export default function Makan(){
   const reviewQueue=canReview?pending.filter(l=>admin||workspaceMemberships.some(m=>m.office_id===l.office_id&&m.office_role==='manager'&&m.membership_status==='active')):pending;
   const recent=canReview?reviewQueue:data;
   const stats=listingAccess?[
-   {label:t('العقارات','Properties'),value:data.length,icon:Building2,open:()=>openProperties()},
-   {label:t('بانتظار المراجعة','Awaiting review'),value:pending.length,icon:ShieldCheck,open:()=>openProperties('pending')},
-   {label:t('الاستفسارات','Inquiries'),value:inbox.length,icon:Inbox,open:openInbox}
+   {label:t('العقارات','Properties'),value:data.length,icon:Building2,tone:'blue',open:()=>openProperties()},
+   {label:t('بانتظار المراجعة','Awaiting review'),value:pending.length,icon:ShieldCheck,tone:'gold',open:()=>openProperties('pending')},
+   {label:t('الاستفسارات','Inquiries'),value:inbox.length,icon:Inbox,tone:'sage',open:openInbox}
   ]:staff?[
-   {label:t('الاستفسارات المعيّنة','Assigned inquiries'),value:inbox.length,icon:Inbox,open:openInbox}
+   {label:t('الاستفسارات المعيّنة','Assigned inquiries'),value:inbox.length,icon:Inbox,tone:'sage',open:openInbox}
   ]:[
-   {label:t('العقارات المحفوظة','Saved homes'),value:savedProperties.length,icon:Heart,open:()=>changePanel('favorites')},
-   {label:t('استفساراتي','My inquiries'),value:inbox.length,icon:Inbox,open:openInbox},
-   {label:t('العقارات المتاحة','Available homes'),value:available.length,icon:Building2,open:()=>changePanel('explore')}
+   {label:t('العقارات المحفوظة','Saved homes'),value:savedProperties.length,icon:Heart,tone:'rose',open:()=>changePanel('favorites')},
+   {label:t('استفساراتي','My inquiries'),value:inbox.length,icon:Inbox,tone:'sage',open:openInbox},
+   {label:t('العقارات المتاحة','Available homes'),value:available.length,icon:Building2,tone:'blue',open:()=>changePanel('explore')}
   ];
   const DirectionArrow=lang==='ar'?ArrowLeft:ArrowRight;
   const firstName=demo?t('نور','Noor'):profile?.full_name?.trim().split(/\s+/u)[0];
@@ -270,7 +270,7 @@ export default function Makan(){
     <p>{new Intl.DateTimeFormat(lang==='ar'?'ar-SY':'en-GB',{weekday:'long',day:'numeric',month:'long',timeZone:'Asia/Damascus'}).format(new Date())}</p>
    </section>
    <div className="overview-metrics">
-    {stats.map(({label,value,icon:Icon,open})=><button key={label} onClick={open}>
+    {stats.map(({label,value,icon:Icon,tone,open})=><button key={label} data-tone={tone} onClick={open}>
      <span className="overview-metric-icon"><Icon size={19}/></span>
      <span className="overview-metric-copy"><strong>{value}</strong><span>{label}</span></span>
      <DirectionArrow className="overview-arrow" size={16}/>

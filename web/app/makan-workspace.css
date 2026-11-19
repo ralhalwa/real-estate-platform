@@ -578,6 +578,48 @@ html:has(.workspace-page) {
   text-align: start;
 }
 
+:is(.overview-metrics > button, .people-summary > span, .offices-summary > span)[data-tone='blue'] {
+  --metric-tint: #edf3f9;
+  --metric-icon: #dce9f5;
+  --metric-accent: #285578;
+}
+
+:is(.overview-metrics > button, .people-summary > span, .offices-summary > span)[data-tone='gold'] {
+  --metric-tint: #f8f0de;
+  --metric-icon: #efdfb8;
+  --metric-accent: #795923;
+}
+
+:is(.overview-metrics > button, .people-summary > span, .offices-summary > span)[data-tone='sage'] {
+  --metric-tint: #edf4ee;
+  --metric-icon: #dcebe0;
+  --metric-accent: #34604a;
+}
+
+.overview-metrics > button[data-tone='rose'] {
+  --metric-tint: #faf0eb;
+  --metric-icon: #f3e1d7;
+  --metric-accent: #824f40;
+}
+
+.overview-metrics > button[data-tone] {
+  border-color: var(--metric-icon);
+  background: var(--metric-tint);
+}
+
+.overview-metrics > button[data-tone]:hover {
+  border-color: var(--metric-accent);
+  background: var(--metric-icon);
+}
+
+.overview-metrics > button[data-tone] :is(.overview-metric-icon, .overview-arrow) {
+  color: var(--metric-accent);
+}
+
+.overview-metrics > button[data-tone] .overview-metric-icon {
+  background: var(--metric-icon);
+}
+
 .overview-metric-icon,
 .overview-thumb {
   position: relative;
@@ -679,7 +721,6 @@ html:has(.workspace-page) {
   color: var(--bronze);
 }
 
-.overview-metrics > button:hover,
 .overview-activity-row:hover {
   background: var(--makan-ivory);
 }
@@ -712,4 +753,27 @@ html:has(.workspace-page) {
     font-size: 11px;
     text-align: end;
   }
+}
+
+
+.workspace-page :is(.people-summary, .offices-summary) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 145px), 1fr));
+  gap: 10px;
+  margin-block: 16px 20px;
+  padding: 0;
+  border: 0;
+}
+
+.workspace-page :is(.people-summary, .offices-summary) > span[data-tone] {
+  gap: 9px;
+  padding: 11px 13px;
+  border: 1px solid var(--metric-icon);
+  border-radius: 10px;
+  background: var(--metric-tint);
+}
+
+.workspace-page :is(.people-summary, .offices-summary) > span[data-tone] > svg {
+  background: var(--metric-icon);
+  color: var(--metric-accent);
 }
