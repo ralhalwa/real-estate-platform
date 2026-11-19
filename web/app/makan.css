@@ -1276,3 +1276,52 @@ body:has(> .makan-footer) > main {
     gap: 0;
   }
 }
+
+.makan-listing-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  margin: 0 0 20px;
+  padding: 8px 16px;
+  border-radius: 11px;
+  background: var(--makan-ivory);
+}
+
+.makan-listing-facts > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 7px;
+  padding-block: 10px;
+  border-block-end: 1px solid var(--makan-border);
+}
+
+.makan-listing-facts dt {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--makan-slate);
+  font-size: 12px;
+}
+
+.makan-listing-facts dd {
+  margin: 0;
+  color: var(--makan-navy);
+  font-size: 12px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.makan-listing-facts > div:nth-last-child(-n + 2) {
+  border-block-end: 0;
+}
+
+@media (max-width: 580px) {
+  .makan-listing-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .makan-listing-facts > div:nth-last-child(2) {
+    border-block-end: 1px solid var(--makan-border);
+  }
+}

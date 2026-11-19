@@ -954,3 +954,16 @@ body:has(.workspace-page) > .dialog .workspace-confirmation-actions .button.soli
   border-color: #773629;
   background: #773629;
 }
+
+.workspace-page.makan-customer-site {
+  min-height: 0;
+  background: var(--makan-ivory);
+}
+
+.makan-customer-content {
+  padding-block-end: 38px;
+}
+
+.makan-customer-content .workspace-page-header {
+  min-height: 78px;
+}
