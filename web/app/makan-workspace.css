@@ -19,14 +19,15 @@ body:has(.workspace-page) > .dialog:not(.makan-auth) {
 }
 
 .workspace-page .workspace-shell .dashboard-sidebar {
-  --ink: var(--makan-ivory);
-  --muted: #d4dce4;
-  --line: #ffffff23;
-  --espresso: var(--makan-paper);
-  --bronze: var(--makan-gold);
+  --ink: var(--makan-navy);
+  --muted: var(--makan-blue);
+  --line: var(--makan-border);
+  --espresso: var(--makan-navy);
+  --bronze: #82632f;
+  --sidebar-active: #e2e9f0;
   color: var(--ink);
-  background: var(--makan-navy);
-  border-color: var(--makan-navy);
+  background: var(--makan-ivory);
+  border-color: var(--line);
 }
 
 .workspace-page .workspace-shell .sidebar-brand {
@@ -34,9 +35,7 @@ body:has(.workspace-page) > .dialog:not(.makan-auth) {
 }
 
 .workspace-page .sidebar-brand .brand-link {
-  padding: 8px 12px;
-  border-radius: 9px;
-  background: var(--makan-ivory);
+  padding: 4px 6px;
 }
 
 .workspace-page .workspace-shell .sidebar-heading {
@@ -48,7 +47,6 @@ body:has(.workspace-page) > .dialog:not(.makan-auth) {
   content: none;
 }
 
-.workspace-page .sidebar-heading::before,
 .workspace-page .profile-identity::before {
   filter: brightness(0) invert(1);
   opacity: .16;
@@ -67,16 +65,22 @@ body:has(.workspace-page) > .dialog:not(.makan-auth) {
 }
 
 .workspace-page .workspace-shell .dashboard-sidebar nav > button:hover {
-  background: #ffffff10;
-  color: var(--makan-paper);
+  background: var(--makan-paper);
+  color: var(--makan-navy);
 }
 
 .workspace-page .workspace-shell .dashboard-sidebar nav > button.active {
-  border-color: #ffffff25;
-  background: var(--makan-blue);
-  color: var(--makan-paper);
+  border-color: #cbd7e3;
+  border-inline-start-color: var(--makan-gold);
+  background: var(--sidebar-active);
+  color: var(--makan-navy);
 }
 
+.workspace-page .workspace-shell .dashboard-sidebar nav > button.active svg {
+  color: var(--bronze);
+}
+
+.workspace-page .workspace-shell .dashboard-sidebar nav > button.active .nav-count,
 .workspace-page .dashboard-sidebar .nav-count {
   border-radius: 5px;
   background: var(--makan-gold);
@@ -95,7 +99,7 @@ body:has(.workspace-page) > .dialog:not(.makan-auth) {
 .workspace-page .dashboard-sidebar .user-summary:hover,
 .workspace-page .dashboard-sidebar .user-summary[aria-current='page'] {
   border-color: var(--line);
-  background: #ffffff0c;
+  background: var(--makan-paper);
 }
 
 .workspace-page .dashboard-sidebar .user-summary > svg {
@@ -103,7 +107,7 @@ body:has(.workspace-page) > .dialog:not(.makan-auth) {
 }
 
 .workspace-page .dashboard-sidebar .sidebar-bottom > .text-btn {
-  color: #f4ccbd;
+  color: #914536;
 }
 
 .workspace-page .dashboard-topline > .text-btn {
@@ -274,10 +278,9 @@ body:has(.workspace-page) > .dialog:not(.makan-auth) :is(input, select, textarea
 }
 
 .workspace-page .dashboard-sidebar select {
-  border-color: #ffffff35;
-  background: var(--makan-blue);
-  color: var(--makan-paper);
-  color-scheme: dark;
+  border-color: var(--line);
+  background: var(--makan-paper);
+  color: var(--makan-navy);
 }
 
 .workspace-page .profile-office-section {
