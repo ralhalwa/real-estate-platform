@@ -222,50 +222,88 @@ html[lang='ar'] .makan-home h2 {
   font-size: clamp(28px, 3.5vw, 38px);
 }
 
-.makan-explore h2 + p {
-  margin-block-start: 6px;
-  font-size: 15px;
+.makan-category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .makan-category {
-  overflow: hidden;
-  padding: 0;
-  border: 1px solid var(--makan-border);
-  border-radius: 14px;
-  background: var(--makan-paper);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 100px;
+  gap: clamp(11px, 2vw, 20px);
+  padding: clamp(14px, 2.4vw, 26px);
+  border: 1px solid #ccd9e4;
+  border-radius: 13px;
+  background: #e8eef4;
+  color: var(--makan-navy);
   text-align: start;
+}
+
+.makan-category[data-purpose='rent'] {
+  border-color: var(--makan-navy);
+  background: var(--makan-navy);
+  color: var(--makan-ivory);
+}
+
+.makan-category[data-purpose='rent']::before {
+  filter: brightness(0) invert(1);
+  opacity: .17;
+}
+
+.makan-category strong {
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.makan-category-icon,
+.makan-category-arrow {
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+}
+
+.makan-category-icon {
+  width: 45px;
+  height: 45px;
+  background: var(--makan-paper);
+  color: var(--makan-blue);
+}
+
+.makan-category[data-purpose='rent'] .makan-category-icon {
+  background: var(--makan-blue);
+  color: var(--makan-gold);
+}
+
+.makan-category-arrow {
+  width: 34px;
+  height: 34px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
 }
 
 .makan-category:hover {
   border-color: var(--makan-gold);
 }
 
-.makan-category > img {
-  width: 100%;
-  aspect-ratio: 1.56;
+.makan-category:hover .makan-category-arrow {
+  border-color: var(--makan-gold);
+  background: var(--makan-gold);
+  color: var(--makan-navy);
 }
 
-.makan-category-copy {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 16px 20px 19px;
-}
+@media (max-width: 650px) {
+  .makan-category-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
 
-.makan-category-copy strong,
-.makan-category-copy small {
-  display: block;
-}
-
-.makan-category-copy strong {
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.makan-category-copy small {
-  color: var(--makan-slate);
-  font-size: 13px;
+  .makan-category {
+    min-height: 75px;
+  }
 }
 
 .makan-signoff {

@@ -1,7 +1,7 @@
 'use client';
 import {useState,useEffect,useCallback,useRef,useId,type FormEvent} from 'react';
 import type {User} from '@supabase/supabase-js';
-import {ArrowUpLeft,ArrowUpRight,ArrowLeft,ArrowRight,Search,MapPin,BedDouble,Bath,Maximize,Heart,Check,CheckCheck,ChevronDown,Plus,X,Menu,LogOut,LayoutGrid,Building2,Users,Inbox,Settings,Globe,RefreshCw,ShieldCheck,Upload,CheckCircle2,AlertCircle,SlidersHorizontal,Mail,Phone,ArrowDown,Home,Eye,FileText,Download,LoaderCircle} from 'lucide-react';
+import {ArrowUpLeft,ArrowUpRight,ArrowLeft,ArrowRight,Search,MapPin,KeyRound,BedDouble,Bath,Maximize,Heart,Check,CheckCheck,ChevronDown,Plus,X,Menu,LogOut,LayoutGrid,Building2,Users,Inbox,Settings,Globe,RefreshCw,ShieldCheck,Upload,CheckCircle2,AlertCircle,SlidersHorizontal,Mail,Phone,ArrowDown,Home,Eye,FileText,Download,LoaderCircle} from 'lucide-react';
 import {supabase,authReturn} from '@/lib/supabase';
 import {fetchWorkspace,workspaceRequests} from '@/lib/workspace-loader';
 import {accountChanged} from '@/lib/request-cache.mjs';
@@ -407,22 +407,17 @@ export default function Makan(){
    <form className="makan-search-fields" onSubmit={e=>{e.preventDefault();setOnlySaved(false);go('browse')}}><label><span>{t('الموقع','LOCATION')}</span><select value={city} onChange={e=>setCity(e.target.value)} aria-label={t('اختر المحافظة','Choose governorate')}><option value="all">{t('اختر المحافظة','Choose a governorate')}</option>{cities.map(c=><option key={c}>{c}</option>)}</select></label><label><span>{t('أبحث عن','I WANT TO')}</span><select value={purpose} onChange={e=>setPurpose(e.target.value)} aria-label={t('بيع أو إيجار','Rent or buy')}><option value="all">{t('شراء أو استئجار','Buy or rent')}</option><option value="sale">{t('شراء عقار','Buy a property')}</option><option value="rent">{t('استئجار عقار','Rent a property')}</option></select></label><label><span>{t('نوع العقار','PROPERTY TYPE')}</span><select value={kind} onChange={e=>setKind(e.target.value)} aria-label={t('نوع العقار','Property type')}><option value="all">{t('جميع الأنواع','All property types')}</option>{['apartment','house','villa','land','commercial'].map(k=><option key={k} value={k}>{typeLabel(k)}</option>)}</select></label><button className="button solid" type="submit">{t('ابحث عن عقارات','Search properties')}</button></form>
   </section>
   <section className="makan-explore makan-container" aria-labelledby="makan-explore-title">
-   <div>
-    <h2 id="makan-explore-title">{t('استكشف البيوت','Explore homes')}</h2>
-    <p>{t('تصفّح البيوت المعروضة للبيع أو الإيجار في سوريا.','Browse places to buy or rent across Syria.')}</p>
-   </div>
-   <div className="property-grid makan-card-grid">
+   <h2 id="makan-explore-title">{t('استكشف البيوت','Explore homes')}</h2>
+   <div className="makan-category-grid">
     {[
-     {purpose:'sale',title:t('بيوت للبيع','Homes for sale'),description:t('تصفّح العقارات المعروضة للبيع في سوريا','Browse properties to buy in Syria'),position:'27% center'},
-     {purpose:'rent',title:t('بيوت للإيجار','Homes for rent'),description:t('تصفّح العقارات المعروضة للإيجار في سوريا','Browse rental properties in Syria'),position:'75% center'},
-    ].map(category=><button type="button" key={category.purpose} className="makan-category" onClick={()=>{
-     setPurpose(category.purpose);setCity('all');setKind('all');setQuery('');setMaxPrice('');setCurrency('all');setOnlySaved(false);go('browse');
+     {purpose:'sale',title:t('بيوت للبيع','Homes for sale'),icon:Home},
+     {purpose:'rent',title:t('بيوت للإيجار','Homes for rent'),icon:KeyRound},
+    ].map(({purpose,title,icon:Icon})=><button type="button" key={purpose} className="makan-category makan-pattern" data-purpose={purpose} onClick={()=>{
+     setPurpose(purpose);setCity('all');setKind('all');setQuery('');setMaxPrice('');setCurrency('all');setOnlySaved(false);go('browse');
     }}>
-     <img src="/images/interior.jpg" alt="" loading="lazy" style={{objectPosition:category.position}}/>
-     <span className="makan-category-copy">
-      <span><strong>{category.title}</strong><small>{category.description}</small></span>
-      {lang==='ar'?<ArrowLeft size={21}/>:<ArrowRight size={21}/>}
-     </span>
+     <span className="makan-category-icon"><Icon size={23} aria-hidden="true"/></span>
+     <strong>{title}</strong>
+     <span className="makan-category-arrow" aria-hidden="true">{lang==='ar'?<ArrowLeft size={19}/>:<ArrowRight size={19}/>}</span>
     </button>)}
    </div>
   </section>
