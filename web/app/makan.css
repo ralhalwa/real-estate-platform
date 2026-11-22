@@ -1392,20 +1392,26 @@ body:has(> .makan-footer) > main {
   color: var(--makan-navy);
 }
 
-.property-page-top {
+.property-page-controls {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px 20px;
-  justify-content: space-between;
-  padding-block-end: 14px;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 13px;
+  justify-content: right;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-block-start: 12px;
 }
 
-.property-page-top .text-btn {
+.property-page-controls .property-page-back {
+  min-height: 36px;
+  padding: 6px 12px;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--white);
   color: var(--makan-navy);
+}
+
+.property-page-controls .property-page-back:hover {
+  background: var(--canvas);
 }
 
 .property-page > .listing-detail {
@@ -1425,7 +1431,8 @@ body:has(> .makan-footer) > main {
 }
 
 .property-page .detail-price {
-  align-self: flex-end;
+  margin-block-start: 14px;
+  text-align: left;
   font-size: clamp(22px, 3vw, 34px);
   font-weight: 600;
   white-space: normal;
@@ -1486,7 +1493,4 @@ body:has(> .makan-footer) > main {
     flex-direction: column;
   }
 
-  .property-page .detail-price {
-    align-self: flex-start;
-  }
 }
