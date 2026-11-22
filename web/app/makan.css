@@ -1583,3 +1583,32 @@ body:has(> .makan-footer) > main {
   flex-shrink: 0;
   margin-block-start: 2px;
 }
+
+.makan-home-page {
+  background: var(--makan-ivory);
+}
+
+@media (min-width: 1440px) {
+  body:has(> .makan-home-page) > :is(.makan-header, .makan-footer) .container,
+  .makan-home-page .makan-container {
+    width: min(1440px, calc(100% - 112px));
+  }
+
+  .makan-home-page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .makan-home-page .makan-home {
+    flex: 1;
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .makan-home-page .makan-landing-copy {
+    max-width: 680px;
+  }
+}
+
+.guest-inquiry-button {
+  margin-block-start: 14px;
+}

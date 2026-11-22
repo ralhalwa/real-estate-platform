@@ -30,9 +30,9 @@ test('token refresh and repeated sign-in events for the same ID do not reset wor
  assert.equal(accountChanged('ali','ali'),false);assert.equal(accountChanged(null,null),false);assert.equal(accountChanged('ali','reem'),true);assert.equal(accountChanged('ali',null),true);assert.equal(accountChanged(undefined,'ali'),true);
 });
 function fakeClient(role='agent',delayListings=false,members=[]){
- const started=[];let release;const listingPromise=delayListings?new Promise(r=>release=r):Promise.resolve([{id:'property',agent_user_id:'ali'}]);
- return {started,release:()=>release?.([{id:'property',agent_user_id:'ali'}]),from(table){started.push(table);let filtered=false;let single=false;
-  const q={select(){return q},eq(){filtered=true;return q},in(column,ids){started.push({table,column,ids});return q},single(){single=true;return q},order(){return q},then(resolve,reject){let result;
+ const started=[];const filters=[];let release;const listingPromise=delayListings?new Promise(r=>release=r):Promise.resolve([{id:'property',agent_user_id:'ali'}]);
+ return {started,filters,release:()=>release?.([{id:'property',agent_user_id:'ali'}]),from(table){started.push(table);let filtered=false;let single=false;
+  const q={select(){return q},eq(column,value){filtered=true;filters.push({table,column,value});return q},in(column,ids){started.push({table,column,ids});return q},single(){single=true;return q},order(){return q},then(resolve,reject){let result;
    if(table==='listings')return listingPromise.then(data=>resolve({data,error:null}),reject);
    if(table==='profiles')result=single?{id:'ali',full_name:'Ali',account_status:'active'}:[{id:'ali'}];
    else if(table==='user_roles')result=[{user_id:'ali',role}];
@@ -54,8 +54,8 @@ test('ordinary agents do not fetch administrator collections',async()=>{
 test('admins load their additional collections after checking their role',async()=>{
  const client=fakeClient('admin');const snapshot=await fetchWorkspace(client,'ali');assert.equal(snapshot.people.length,1);assert.equal(snapshot.offices.length,1);assert.equal(client.started.length,11);
 });
-test('anonymous visits request no workspace data',async()=>{
- const client=fakeClient();const snapshot=await fetchWorkspace(client,null);assert.deepEqual(client.started,[]);assert.deepEqual(snapshot.listings,[]);assert.equal(snapshot.profile,null);assert.deepEqual(snapshot.roles,[]);assert.deepEqual(snapshot.leads,[]);
+test('anonymous visits request only approved and available listings',async()=>{
+ const client=fakeClient();const snapshot=await fetchWorkspace(client,null);assert.deepEqual(client.started,['listings']);assert.deepEqual(client.filters,[{table:'listings',column:'approval_status',value:'approved'},{table:'listings',column:'availability_status',value:'available'}]);assert.equal(snapshot.listings.length,1);assert.equal(snapshot.profile,null);assert.deepEqual(snapshot.roles,[]);assert.deepEqual(snapshot.leads,[]);
 });
 
 test('agents with office memberships load only the assigned office IDs',async()=>{
