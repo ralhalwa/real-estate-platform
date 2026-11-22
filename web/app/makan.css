@@ -1589,7 +1589,8 @@ body:has(> .makan-footer) > main {
 }
 
 @media (min-width: 1440px) {
-  body:has(> .makan-home-page) > :is(.makan-header, .makan-footer) .container,
+  .makan-header .header-inner,
+  body:has(> .makan-home-page) > .makan-footer .container,
   .makan-home-page .makan-container {
     width: min(1440px, calc(100% - 112px));
   }
