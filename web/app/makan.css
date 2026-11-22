@@ -1494,3 +1494,92 @@ body:has(> .makan-footer) > main {
   }
 
 }
+
+.property-page-actions:has(> .listing-agent-card) {
+  border-block-start: 2px solid #b39054;
+}
+
+.property-page-actions > .listing-agent-card:first-child {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-block: 0 19px;
+}
+
+.listing-agent-card > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.listing-agent-card p {
+  margin: 0;
+  color: #756345;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .035em;
+}
+
+.listing-agent-card h2 {
+  margin-block: 4px 0;
+  color: var(--makan-navy);
+  font-family: var(--makan-font);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.35;
+}
+
+.listing-agent-card div > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-block-start: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.property-page .listing-agent-avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 58px;
+  width: 58px;
+  height: 58px;
+  border: 1px solid #c7ad7c;
+  border-radius: 50%;
+  background: #f4efe3;
+  color: var(--makan-navy);
+  box-shadow: none;
+}
+
+.property-page-actions .listing-agent-card + .inquiry-form,
+.property-page-actions .listing-agent-card + .detail-operations {
+  margin-block-start: 0;
+  padding-block-start: 19px;
+}
+
+.property-page-actions .inquiry-form h3 {
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: normal;
+}
+
+.property-page-actions .inquiry-form > p {
+  margin-block-start: 6px;
+}
+
+.listing-form .listing-submit-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-block: 0 12px;
+  padding: 10px 12px;
+  border: 1px solid #ead1c9;
+  border-radius: 8px;
+  background: #fbf2ef;
+  font-size: 13px;
+}
+
+.listing-submit-message svg {
+  flex-shrink: 0;
+  margin-block-start: 2px;
+}
